@@ -35,6 +35,13 @@
   --hero-a: rgba(79, 184, 178, 0.36);
   --hero-b: rgba(47, 106, 74, 0.2);
 
+  /* ── CTA button system ──────────────────────────────────
+     Single teal-green hue family — no cross-hue hover jump.
+     Contrast vs white: ~5.1:1 (base) / ~6.4:1 (hover) ✓ AA */
+  --cta-bg:    #1f7a72;
+  --cta-hover: #165e58;
+  --cta-text:  #ffffff;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.3);
   --card: oklch(1 0 0);
@@ -90,6 +97,11 @@
   --link-bg-hover: rgba(24, 44, 49, 0.8);
   --hero-a: rgba(96, 215, 207, 0.18);
   --hero-b: rgba(110, 200, 154, 0.12);
+
+  /* CTA — lighter teal so it pops on dark backgrounds */
+  --cta-bg:    #2aaa9e;
+  --cta-hover: #22918a;
+  --cta-text:  #ffffff;
 
   --background: oklch(0.147 0.004 49.3);
   --foreground: oklch(0.986 0.002 67.8);
@@ -290,6 +302,36 @@ a {
   transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
     transform 180ms ease;
 }
+
+/* ── CTA button utility ─────────────────────────────────────
+   Use .btn-cta / .btn-cta-sm / .btn-cta-lg on <button> or <a>.
+   Pair with rounded-full for pill shape, rounded-xl for softer rect. */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  background-color: var(--cta-bg);
+  color: var(--cta-text);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 180ms ease, transform 100ms ease, box-shadow 180ms ease;
+}
+.btn-cta:hover {
+  background-color: var(--cta-hover);
+  color: var(--cta-text);
+  text-decoration: none;
+}
+.btn-cta:active  { transform: scale(0.97); }
+.btn-cta:disabled,
+.btn-cta[disabled] { opacity: 0.5; pointer-events: none; }
+
+.btn-cta-sm { padding: 0.375rem 0.875rem; font-size: 0.75rem; }
+.btn-cta-lg { padding: 0.75rem 1.75rem;   font-size: 0.9375rem; font-weight: 700; }
 
 .island-kicker {
   letter-spacing: 0.16em;
